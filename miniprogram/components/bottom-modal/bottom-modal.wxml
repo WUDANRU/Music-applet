@@ -1,0 +1,17 @@
+<view class="modal" hidden="{{!modalShow}}">  <!-- !modalShow，假如modalShow是true，hidden="{{!modalShow}}就是不隐藏/显示 -->
+  <view class="panel">
+      <i class="iconfont icon-shanchu1" bind:tap="onClose"></i>
+      <!-- slot插槽  具名插槽 -->
+      <slot name="modal-content"></slot>
+  </view>
+</view>
+
+
+<!-- <view class="modal" hidden="{{!modalShow}}"> -->   <!-- !modalShow，假如modalShow是true，hidden="{{!modalShow}}就是不隐藏/显示 -->
+  <!-- <view class="panel"> -->
+      <!-- <i class="iconfont icon-shanchu1" bind:tap="onClose"></i> -->
+      <!-- slot插槽  具名插槽-->
+     <!--  <slot name="slot1"></slot>  使用多个插槽需要在js文件中声明multipleSlots: true，才会起作用 -->
+    <!--   <slot name="slot2"></slot>  对应的是blog.wxml的<x-bottom-modal> -->
+  <!-- </view> -->
+<!-- </view> -->

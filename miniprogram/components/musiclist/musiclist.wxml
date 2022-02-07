@@ -1,0 +1,17 @@
+
+<!-- 公共组件不需要在app.json页面配置页面路径，而pages的页面需要在app.json页面配置页面路径 -->
+
+<!-- .playing view, .playing text { color: #d43c33; } -->
+
+ <block wx:for="{{musiclist}}" wx:key="id">   <!-- 自定义都需要这样：data-    {{item.id}}是pages的musiclist.js文件的musiclist: pl.tracks的id --> 
+  <view class="musiclist-container {{item.id === playingId ? 'playing': ''}}" bind:tap="onSelect" data-musicid="{{item.id}}" data-index="{{index}}">
+    <view class="musiclist-index">{{index+1}}</view> <!-- item.id是数字，playingId是data-musicid="{{item.id}}"得到的musicid是字符串(musicid即playingId即类型是字符串)，当前js文件加上parseInt，吧字符串playingId转为numberplayingId -->
+    <view class="musiclist-info">
+      <view class="musiclist-name">
+        {{item.name}}
+        <text class="musiclist-alia">{{item.alia.length==0?"":item.alia[0]}}</text> <!-- 如果有的歌单有别名吧别名显示在后面，没有就显示空 item.alia[0]}吧别名显示在后面 -->
+      </view>
+      <view class="musiclist-singer">{{item.ar[0].name}} - {{item.al.name}}</view>
+    </view>
+  </view>
+</block>

@@ -1,0 +1,11 @@
+ <scroll-view hidden="{{isLyricShow}}" class="lyric-scroll" scroll-y scroll-top="{{scrollTop}}" scroll-with-animation="true"> 
+
+ <!--  scroll-y scroll-top="{{scrollTop}}" y轴方向 向上滚动 scrollTop是px单位  .lyric {  min-height: 64rpx; }是单句歌词的高度   scroll-with-animation="true"动画  -->
+  
+  <view class="lyric-panel">  <!-- 歌词是样式是定位在50%的位置，从中间开始 -->
+    <block wx:for="{{lrcList}}" wx:key="item">  <!-- item即lrcList，是个数组 item不要写成{{item}} -->
+      <view class="lyric {{index==nowLyricIndex?'hightlight-lyric': ''}}">{{item.lrc}}</view>
+    </block>
+  </view>
+
+ </scroll-view> <!-- 滚动容器 -->

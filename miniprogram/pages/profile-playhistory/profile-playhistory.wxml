@@ -1,0 +1,1 @@
+<x-musiclist musiclist="{{musiclist}}" /> <!-- musiclist.js的properties:{musiclist:Array}被两个文件共用了 -->

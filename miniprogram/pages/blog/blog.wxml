@@ -1,0 +1,40 @@
+<view class="container">
+  <!-- 头部 -->
+  <view class="header">
+    <view class="publish-container" bind:tap="onPublish">
+      <i class="iconfont icon-fabu"></i>  <!-- 这个小图标写在view里点击区域会稍微大点或者样式padding -->
+    </view>
+    <view class="search-container">
+    <x-search iconfont="iconfont" icon-sousuo="icon-sousuo" bind:search="onSearch" /> 
+    <!-- iconfont="iconfont" icon-sousuo="icon-sousuo"传到search组件的js文件  等号左边的iconfont和等号左边的icon-sousuo是自定义的，等号右边的类名  -->
+    </view>
+  </view>
+
+  <!-- 博客卡片列表 -->
+   <view class="blog-list">
+    <block wx:for="{{blogList}}" wx:key="_id">
+      <view class="blog-panel">
+        <x-blog-card blog="{{item}}" data-blogid="{{item._id}}" bind:tap="goComment" />
+        <x-blog-ctrl blogId="{{item._id}}" blog="{{item}}" iconfont="iconfont" icon-pinglun="icon-pinglun" icon-fenxiang="icon-fenxiang" />
+      </view>
+    </block>
+  </view> 
+
+
+  <!-- Component is not found in path是因为blog-card.json和blog-ctrl.json少了 "component": true -->
+
+
+  <!-- 底部弹出层 -->   <!-- modalShow="{{modalShow}}"这个是传给组件x-login的js文件中的，再从组件x-login的wxml文件传给组件x-bottom-modal的js文件中的 -->
+ <x-login modalShow="{{modalShow}}" bind:loginsuccess="onLoginSuccess" bind:loginfail="onLoginFail"> <!-- onLoginSuccess事件处理函数 -->
+  <!-- login.js文件的this.triggerEvent('loginsuccess', userInfo)抛出来，当前文件接收(bind:loginsuccess="onLoginSuccess") --> 
+  </x-login>
+
+<!-- <x-bottom-modal modalShow="{{modalShow}}">     这个是传给组件x-bottom-modal的js文件中的
+  <view slot="slot2">
+    <view>插槽1</view>
+    <button>按钮</button>
+  </view>
+  <view slot="slot1">插槽2</view>    这里面的是放在bottom-modal.wxml的<slot name="slot1"></slot>中的
+</x-bottom-modal> -->
+
+</view>

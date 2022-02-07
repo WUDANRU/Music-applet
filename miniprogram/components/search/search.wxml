@@ -1,0 +1,5 @@
+<view class="container">
+  <i class="iconfont icon-sousuo find"></i>  <!-- find是重新起的，代替了被隔离的类icon-sousuo，因为是组件内用不了全局的类 -->
+  <input class="bar" placeholder="{{placeholder}}" placeholder-class="in-bar" bindinput="onInput"></input>   <!-- {{placeholder}}是动态的，写在当前js文件的properties里，blog.wxml只是引入了<x-search>标签，没有写到placeholder -->
+  <button class="search" bind:tap="onSearch">搜索</button> <!-- 第一种是在组件内引入iconfont.wxss文件和import引入，另外一种是通过在pages/blog/blog.wxml(iconfont="iconfont" icon-sousuo="icon-sousuo")传递过来,和在当前js文件的externalClasses写上类名  -->
+</view>

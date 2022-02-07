@@ -1,0 +1,13 @@
+ <view class='detail-container' style='background: url({{listInfo.coverImgUrl}}) no-repeat '></view>  <!-- no-repeat平铺 -->
+<view class='detail-mask'></view>
+<view class='detail-info'>
+  <image src="{{listInfo.coverImgUrl}}" class='detail-img'></image>
+  <view class='detail'>
+    <view class='detail-name'>{{listInfo.name}}</view>
+  </view>
+</view>
+
+<!-- 吧这个musiclist="{{musiclist}}"传给了x-musiclist组件 -->
+  <x-musiclist musiclist="{{musiclist}}" />   <!-- {{musiclist}}对应的是pages的musiclist.js的data的musiclist: [], -->
+ <!--既可以像pages下的playlist.wxml文件的外部在对公共组件x-playlist作循环，也可以像这个文件一样不在外部对公共组件x-musiclist作循环，在components的musiclist.wxml文件对自己作循环 -->
+

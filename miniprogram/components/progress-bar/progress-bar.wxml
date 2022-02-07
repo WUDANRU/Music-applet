@@ -1,0 +1,17 @@
+<view class="container">
+  <text class="time">{{showTime.currentTime}}</text>
+  <view class="control"> <!-- 这个里面的是进度条 -->
+    <movable-area class="movable-area">  <!-- <movable-area>可移动视图的容器 <movable-view>可移动视图的区域 .movable-view是圆点 -->
+    <!-- bindtouchend事件，当前完成触摸触发，即拉动进度条当松手会触发，如果没有松手也触发影响小程序性能 -->
+     
+      <movable-view direction="horizontal" class="movable-view"
+        damping="1000" x="{{movableDis}}" bindchange="onChange"
+        bindtouchend="onTouchEnd"
+       />  <!-- damping这个值越大滑动的越快(阻离系数)  x控制水平滑动的距离  .movable-view中间滑动的圆圈 -->
+    </movable-area>
+
+    <progress stroke-width="4" backgroundColor="#969696"
+    activeColor="#fff" percent="{{progress}}"></progress>  <!-- <progress>标签，进度   stroke-width进度的粗细   percent当前移动了多少 -->
+  </view>
+  <text class="time">{{showTime.totalTime}}</text>
+</view>

@@ -1,0 +1,32 @@
+<view class="container">
+<!-- 原生组件(textarea)层级最大，包在其他里面是覆盖不住他层级的,也不能写在<scroll-view>/<swiper>/<movable-view>标签内，会不起作用，不能增加css动画,也不能设置绝对定位，可以通过fixed属性设置绝对定位 -->
+<!-- <textarea fixed=""></textarea> -->
+  <textarea class="content" placeholder="分享新鲜事..."
+    bindinput="onInput" maxlength="140" auto-focus
+    bindfocus="onFocus" bindblur="onBlur"
+  ></textarea> 
+<!-- auto-focus自动获取焦点 -->
+<!-- bindinput="onInput"这个可以监听到输入的文字 bindinput不能写成bind:input,因为textarea是原生组件 maxlength="140"最大字数140 -->
+<!-- bindfocus="onFocus" bindblur="onBlur"获得焦点和失去焦点是用于键盘弹出和隐藏， 当获得焦点，键盘弹出不会覆盖底部footer，通过footerBottom: event.detail.height获取键盘高度 -->
+  <view class="image-list">
+    <!-- 显示图片 -->
+    <block wx:for="{{images}}" wx:key="*this">
+      <view class="image-wrap">
+        <image class="image" src="{{item}}" mode="aspectFill" bind:tap="onPreviewImage" data-imgsrc="{{item}}"></image>
+        <i class="iconfont icon-shanchu" bind:tap="onDelImage" data-index="{{index}}"></i>
+      </view>
+    </block>
+
+    <!-- 选择图片 -->  <!-- .selectphoto的样式不要设置display:flex,因为会隐藏不了 -->
+   <view class="image-wrap selectphoto" hidden="{{!selectPhoto}}" bind:tap="onChooseImage"> <!-- hidden="{{!selectPhoto}}"代表显示 -->
+      <i class="iconfont icon-jiahao"></i>
+    </view>
+  
+  </view>
+</view>
+
+<!-- 底部footer -->
+<view class="footer" style="bottom:{{footerBottom}}px">  <!-- style="bottom:{{footerBottom}}px" -->
+  <text class="words-num">{{wordsNum}}</text>
+  <button class="send-btn" bind:tap="send">发布</button>
+</view>

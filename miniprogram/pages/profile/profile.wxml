@@ -1,0 +1,37 @@
+
+<!-- <navigator>标签是页面链接标签/链接组件相当于bind:tap和wx.navigator({url:'../../'}) -->
+
+<view class="profile-header">
+  <view class="avatar-url">
+    <open-data type="userAvatarUrl"></open-data>
+  </view>
+  <open-data type="userNickName" class="nickname"></open-data>
+</view>
+
+<view class="nav">
+  
+  <!-- hover-class="none"点击了会有灰色的背景 这个页面的图片是base64位转换的，可以用http链接的图片，一般不用本地图片(不吧图片保存在新建的文件夹里)，图标有保存在本地图标 -->
+  
+  <view class="nav-item">
+    <navigator class="content" hover-class="none" url="/pages/profile-playhistory/profile-playhistory"> 
+      <i class="iconfont icon-ziyuanldpi"></i>
+      <text class="text">最近播放</text>
+      <i class="iconfont icon-xiangyou"></i>
+    </navigator>
+  </view>
+  <view class="nav-item">
+    <navigator class="content" hover-class="none" url="/pages/profile-bloghistory/profile-bloghistory">
+      <i class="iconfont icon-shoucang"></i>
+      <text class="text">我的发现</text>
+      <i class="iconfont icon-xiangyou"></i>
+    </navigator>
+  </view>
+  <view class="nav-item">
+    <view class="content" bind:tap="onTapQrCode">
+      <i class="iconfont icon-weibiaoti--"></i>
+      <text class="text">小程序码</text>
+      <i class="iconfont icon-xiangyou"></i>
+    </view>
+  </view>
+
+</view>

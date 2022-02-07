@@ -1,0 +1,27 @@
+<view class="player-container" style="background:url({{picUrl}}) center/cover no-repeat"></view> <!-- center/cover no-repeat 居中/吧容器都覆盖掉 不重复-->
+<view class="player-mask"></view>
+
+ <view class="player-info"> <!-- 里面的元素都是相对于这个定位，所以写了这个，但是它自己也是绝对定位 -->
+  <!-- 封面信息 -->   <!-- hidden指的是显示或隐藏  hide和if都是显示和隐藏 -->
+   <view class="player-disc {{isPlaying?'play': ''}}" bind:tap="onChangeLyricShow" hidden="{{isLyricShow}}" >
+    <image class="player-img rotation {{isPlaying?'':'rotation-paused'}}" src="{{picUrl}}"></image>
+  </view>
+
+  <!-- 歌词和封面信息用了同样的bind:tap="onChangeLyricShow"，这个事件在js文件是设置了取反的，点击歌词切换到封面信息，点击封面信息切换到歌词 -->
+  
+  <!-- 歌词     isLyricShow="{{!isLyricShow}}" !false传给lyric.wxml的hidden="{{isLyricShow}}"是隐藏歌词 --> 
+  <x-lyric class="lyric" isLyricShow="{{!isLyricShow}}" bind:tap="onChangeLyricShow" lyric="{{lyric}}" />
+
+  <!-- 进度条 -->  <!-- bind:musicEnd="onNext"是监听progress-bar.js的this.triggerEvent('musicEnd')的musicEnd，然后调用onNext事件 -->
+  <view class="progress-bar">  <!-- bind:musicEnd="onNext"要用到下面的bind:tap="onNext"的onNext，因为能用到就会自动播放下一首，见progress-bar.js的this.triggerEvent('musicEnd') -->
+    <x-progress-bar bind:musicEnd="onNext" bind:timeUpdate="timeUpdate" bind:musicPlay="onPlay" bind:musicPause="onPause" isSame="{{isSame}}" />
+  </view>
+<!-- bind:musicPlay="onPlay" bind:musicPause="onPause"是在progress-bar.js传过来的 -->
+  <!-- 控制面板 -->
+   <view class="control">
+    <text class="iconfont icon-shangyishoushangyige" bind:tap="onPrev"></text>
+    <text class="iconfont {{isPlaying?'icon-zanting1':'icon-bofang1'}}" bind:tap="togglePlaying"></text> <!-- {{isPlaying?'icon-zanting1':'icon-bofang1'}}这个一开始是点击了跳转到新页面然后显示暂停的按钮再显示播放的按钮，有isplay控制播放或是暂停，点击是后面才添加的bind:tap="togglePlaying"，然后就可以随意点击并且有切换播放和暂停的效果了 -->
+    <text class="iconfont icon-xiayigexiayishou" bind:tap="onNext"></text>
+  </view>
+
+</view>

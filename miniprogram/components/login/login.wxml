@@ -1,0 +1,12 @@
+<x-bottom-modal modalShow="{{modalShow}}">
+  <view slot="modal-content">
+    <button class="login"
+      open-type="getUserInfo"
+      bindgetuserinfo="onGotUserInfo"
+    >获取微信授权信息</button> 
+  </view>
+
+  <!-- onGotUserInfo是自定义事件，写在当前js文件的method里 -->
+  <!-- open-type="getUserInfo"和bindgetuserinfo写在button里,是固定这样写的  open-type="getUserInfo"的getUserInfo代表获取用户信息 -->
+
+</x-bottom-modal>

@@ -1,0 +1,43 @@
+<!-- <block wx:for="{{arr}}">
+<view>{{index}}:{{item}}</view>
+</block> -->
+
+<!-- <block wx:for="{{arr}}" wx:for-item="data" wx:for-index="idx">
+<view>{{idx}}:{{data}}</view>
+</block> -->
+
+
+<!-- <block wx:for="{{arr}}" wx:for-item="data" wx:for-index="idx" wx:key="{{idx}}">  <!-- wx:for-item="data"和wx:for-index="idx"是指定的data和idx 
+<view><checkbox/>{{data}}</view>
+</block>
+ <button bind:tap="sort">随机排序</button>  bind:tap="sort" 绑定的事件/方法    wx:key="{{idx}}",因为idx是指定的，所以要加大括号 -->
+
+
+ <block wx:for="{{arr}}" wx:for-item="data" wx:for-index="idx" wx:key="*this">
+ <view><checkbox/>{{data}}</view>
+ </block>
+ <button bind:tap="sort">随机排序1</button>
+
+
+
+ <block wx:for="{{arrObj}}"  wx:key="id"> <!-- wx:key="id"和wx:key="*this"是指自己本身，独一无二的，当数据变化需要用到独一无二的key索引，当数据静态的话，可以用独一无二的也可以用index或指定的下标索引-->
+ <view><checkbox/>{{item.name}}</view>
+ </block>
+ <button bind:tap="sortObj">随机排序2</button> 
+
+
+ <button bind:tap="getMusicInfo">获取音乐信息</button>
+ <button bind:tap="getMovieInfo">获取电影信息</button>
+  
+
+
+<open-data type="userAvatarUrl"></open-data>
+<open-data type="userNickName"></open-data>
+<open-data type="userCountry"></open-data>
+<open-data type="userCity"></open-data>
+
+<button open-type="getUserInfo"
+  bindgetuserinfo="onGetUserInfo"
+>获取用户信息</button>
+
+<button bind:tap="getOpenid">获取openid</button>

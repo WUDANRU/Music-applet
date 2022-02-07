@@ -1,0 +1,15 @@
+<view class="blog">
+  <view class="blog-title">
+    <image class="blog-portrait" src="{{blog.avatarUrl}}"></image>
+    <view class="blog-box">
+      <view class="blog-nickName">{{blog.nickName}}</view>
+      <view class="blog-time">{{_createTime}}</view>
+    </view>
+  </view>
+  <view class="blog-content">{{blog.content}}</view>
+  <view class="blog-img">
+     <block wx:for="{{blog.img}}"  wx:key="index" >  <!-- wx:key="{{index}}"会有警告   wx:key="*this" --> 
+      <image  class="img" src="{{item}}" mode="aspectFill" catch:tap="onPreviewImage" data-imgsrc="{{item}}" data-imgs="{{blog.img}}"></image>
+    </block> <!-- 子元素绑定事件bind:tap="onPreviewImage"，父元素blog.wxml也绑定事件<x-blog-card bind:tap="goComment" /> -->
+  </view> <!-- catch:tap="onPreviewImage"阻止冒泡，写成bind:tap的话事件会向上冒泡 -->
+</view>

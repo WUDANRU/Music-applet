@@ -1,0 +1,27 @@
+<view class="ctrl">
+  <view class="ctrl-item" bind:tap="onComment">
+    <i class="iconfont icon-pinglun icon"></i>
+    <text>评论</text>
+  </view>
+  <view class="ctrl-item share">
+    <button open-type="share" data-blogid="{{blogId}}" data-blog="{{blog}}" class="share-btn" hover-class="share-hover">
+      <i class="iconfont icon-fenxiang icon"></i>
+      <text>分享</text>
+    </button> <!-- 分享是需要绑定在button上的 -->
+  </view>
+</view>
+
+<!-- 首次登录的时候登录框点击允许授权后会弹出评论框 -->
+<x-login modalShow="{{loginShow}}" bind:loginsuccess="onLoginsuccess" bind:loginfail="onLoginfail" />
+
+<x-bottom-modal modalShow="{{modalShow}}">
+
+  <form slot="modal-content" report-submit="true" bind:submit="onSend"> <!-- 原来是view标签，因为是模板消息，所以吧view改成form标签，并写report-submit="true"，模板消息才有用 -->
+  <textarea name="content" class="comment-content" placeholder="写评论" value="{{content}}"  fixed="true"></textarea> <!-- textarea原来有bindinput="onInput" -->
+  <button class="send" form-type='submit' >发送</button> 
+   <!-- <button class="send" form-type='submit'  bind:tap="onSend">发送</button>  这个原来的button标签不管用改为view,然后写了样式，还是有问题，再改回button,吧原来绝对定位的样式改为相对定位 -->
+   </form>      <!-- <button form-type='submit'>发送</button>的form-type='submit'，提交按钮所在的表单，提交的时候会触发bind:submit="onSend"(处理发送的操作)，吧bind:tap="onSend"删除 -->
+  
+</x-bottom-modal>
+
+

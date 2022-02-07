@@ -1,0 +1,14 @@
+<swiper indicator-dots="true" autoplay="true" interval="2000" duration="1000"> 
+<!-- indicator-dots 小圆点 interval 2秒后滑动     duration 图片1秒钟滑完 --> 
+  <block wx:for="{{swiperImgUrls}}" wx:key="url">
+     <swiper-item> <!-- wx:for写在swiper-item也可以，但是建议写在block里,for循环写在block里 -->
+       <image class="img" src="{{item.url}}" mode="widthFix"></image> <!-- scaleToFill aspectFit widthFix -->
+    </swiper-item>
+  </block>
+</swiper>
+
+<view class="playlist-container"> <!-- x-playlist 自定义组件名 -->
+   <block wx:for="{{playlist}}" wx:key="_id"> <!-- wx:key="_id",用了独一无二的key值索引，这里是静态的也可以用index或指定的下标索引 -->
+     <x-playlist playlist="{{item}}"></x-playlist>  <!-- playlist="{{item}}吧这个传给了x-playlist组件 -->
+  </block>
+</view>
